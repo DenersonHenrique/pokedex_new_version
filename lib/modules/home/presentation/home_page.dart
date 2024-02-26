@@ -5,9 +5,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'HomePage',
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Pokedex HomePage',
+        ),
       ),
     );
   }
