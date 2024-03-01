@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-import 'next_evolution_entity.dart';
-import 'prev_evolution_entity.dart';
+import 'evolution_entity.dart';
 
 class PokemonEntity extends Equatable {
   final int? id;
-  final String? num;
+  final String? number;
   final String? name;
   final String? img;
   final List<String>? type;
@@ -19,12 +18,12 @@ class PokemonEntity extends Equatable {
   final String? spawnTime;
   final List<double>? multipliers;
   final List<String>? weaknesses;
-  final List<PrevEvolutionEntity>? prevEvolution;
-  final List<NextEvolutionEntity>? nextEvolution;
+  final List<EvolutionEntity>? prevEvolution;
+  final List<EvolutionEntity>? nextEvolution;
 
   const PokemonEntity({
     required this.id,
-    required this.num,
+    required this.number,
     required this.name,
     required this.img,
     required this.type,
@@ -45,7 +44,7 @@ class PokemonEntity extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        num,
+        number,
         name,
         img,
         type,

@@ -20,7 +20,7 @@ void main() {
   group('Find Pokemon list.', () {
     test('Should be return a Pokemon List.', () async {
       when(repository.getPokemonList()).thenAnswer(
-        (_) async => Future.value(pokemonList),
+        (_) async => pokemonList,
       );
 
       final result = await usecase.call();
@@ -34,7 +34,7 @@ void main() {
 final List<PokemonEntity> pokemonList = <PokemonEntity>[
   PokemonEntity(
     id: 1,
-    num: faker.randomGenerator.integer(150).toString(),
+    number: faker.randomGenerator.integer(150).toString(),
     name: faker.guid.guid(),
     img: faker.guid.guid(),
     type: faker.lorem.words(4),
