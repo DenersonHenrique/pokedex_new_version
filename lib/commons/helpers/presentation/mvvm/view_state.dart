@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './viewmodel.dart';
+import 'mvvm.dart';
 import '../utils/utils.dart';
 
 /// An abstract class to inject a [ViewModel] into a page/widget

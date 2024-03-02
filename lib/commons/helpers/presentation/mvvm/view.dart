@@ -1,4 +1,4 @@
-import './viewmodel.dart';
+import 'mvvm.dart';
 import '../utils/utils.dart';
 import '../../interfaces/infrastructure/navigation_arguments.dart';
 

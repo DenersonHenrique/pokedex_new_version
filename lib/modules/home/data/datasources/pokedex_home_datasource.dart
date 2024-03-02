@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../models/pokemon_model.dart';
 import '../../../../commons/helpers/erros.dart';
 import '../../../../commons/adapters/http_client.dart';
@@ -16,8 +18,9 @@ class PokedexHomeDataSource extends IPokedexHomeDatasource {
   Future<List<PokemonModel>> get() async {
     try {
       final response = await _client.get(ConstsApi.pokeApiUrl);
+      final jsonDecode = json.decode(response.data);
 
-      return ((response.data ?? []) as List)
+      return ((jsonDecode['pokemon'] ?? []) as List)
           .map((element) => PokemonModel.fromMap(element))
           .toList();
     } on Exception catch (error) {

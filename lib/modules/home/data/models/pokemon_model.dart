@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'evolution_model.dart';
 import '../../domain/entity/pokemon_entity.dart';
 
 class PokemonModel extends PokemonEntity {
@@ -17,29 +18,35 @@ class PokemonModel extends PokemonEntity {
     required super.spawnChance,
     required super.avgSpawns,
     required super.spawnTime,
-    required super.multipliers,
+    super.multipliers,
     required super.weaknesses,
-    super.prevEvolution,
-    super.nextEvolution,
+    List<EvolutionModel>? super.prevEvolution,
+    List<EvolutionModel>? super.nextEvolution,
   });
 
-  factory PokemonModel.fromMap(Map<String, dynamic> map) => PokemonModel(
-        id: map['id'],
-        number: map['num'],
-        name: map['name'],
-        img: map['img'],
-        type: map['type'],
-        height: map['height'],
-        weight: map['weight'],
-        candy: map['candy'],
-        candyCount: map['candyCount'],
-        egg: map['egg'],
-        spawnChance: map['spawnChance'],
-        avgSpawns: map['avgSpawns'],
-        spawnTime: map['spawnTime'],
-        multipliers: map['multipliers'],
-        weaknesses: map['weaknesses'],
-      );
+  factory PokemonModel.fromMap(Map<String, dynamic> map) {
+    return PokemonModel(
+      id: map['id'],
+      number: map['num'],
+      name: map['name'],
+      img: map['img'],
+      type: (map['type'] as List<dynamic>).cast<String>(),
+      height: map['height'],
+      weight: map['weight'],
+      candy: map['candy'],
+      candyCount: map['candyCount'],
+      egg: map['egg'],
+      spawnChance: map['spawnChance'],
+      avgSpawns: map['avgSpawns'],
+      spawnTime: map['spawnTime'],
+      multipliers: (map['multipliers'] != null
+          ? (map['multipliers'] as List<dynamic>).cast<double>()
+          : []),
+      weaknesses: (map['weaknesses'] as List<dynamic>).cast<String>(),
+      prevEvolution: map['prevEvolution'],
+      nextEvolution: map['nextEvolution'],
+    );
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -79,6 +86,12 @@ class PokemonModel extends PokemonEntity {
         spawnTime: entity.spawnTime,
         multipliers: entity.multipliers,
         weaknesses: entity.weaknesses,
+        prevEvolution: entity.prevEvolution
+            ?.map((element) => EvolutionModel.fromEntity(element))
+            .toList(),
+        nextEvolution: entity.nextEvolution
+            ?.map((element) => EvolutionModel.fromEntity(element))
+            .toList(),
       );
 
   Map<String, dynamic> get toMap => {
@@ -97,6 +110,8 @@ class PokemonModel extends PokemonEntity {
         'spawnTime': spawnTime,
         'multipliers': multipliers,
         'weaknesses': weaknesses,
+        'prevEvolution': prevEvolution,
+        'nextEvolution': nextEvolution,
       };
 
   factory PokemonModel.fromJson(String source) =>
