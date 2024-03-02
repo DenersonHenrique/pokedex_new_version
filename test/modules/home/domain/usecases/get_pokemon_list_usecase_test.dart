@@ -1,9 +1,9 @@
 import 'package:faker/faker.dart';
-import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:pokedex_new_version/modules/home/domain/entity/pokemon_entity.dart';
-import 'package:pokedex_new_version/modules/home/domain/usecases/get_pokemon_list_usecase.dart';
 import 'package:pokedex_new_version/modules/home/domain/repositories/pokedex_home_repository.dart';
+import 'package:pokedex_new_version/modules/home/domain/usecases/get_pokemon_list_usecase.dart';
 
 class PokedexHomeRepositoryMock extends Mock
     implements IPokedexHomeRepository {}
@@ -51,5 +51,5 @@ final List<PokemonEntity> pokemonList = <PokemonEntity>[
       10,
     ),
     weaknesses: faker.lorem.words(4),
-  )
+  ),
 ];

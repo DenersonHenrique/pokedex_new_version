@@ -19,7 +19,7 @@ class PokeItemTypeWidget extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: const Color.fromARGB(80, 255, 255, 255),
+                color: const Color.fromARGB(80, 72, 70, 70),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(6.0),
@@ -36,7 +36,7 @@ class PokeItemTypeWidget extends StatelessWidget {
             ),
             const SizedBox(
               height: 5,
-            )
+            ),
           ],
         ),
       );

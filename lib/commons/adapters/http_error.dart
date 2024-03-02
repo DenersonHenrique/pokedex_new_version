@@ -1,4 +1,4 @@
-import 'package:pokedex_new_version/commons/adapters/http_request.dart';
+import 'http_request.dart';
 
 class HttpError implements Exception {
   final dynamic data;

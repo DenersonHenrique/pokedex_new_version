@@ -1,5 +1,5 @@
-import '../domain/entity/pokemon_entity.dart';
 import '../../../commons/helpers/presentation/mvvm/mvvm.dart';
+import '../domain/entity/pokemon_entity.dart';
 
 class HomeState extends ViewModelState {
   factory HomeState.initial() => const HomeState();

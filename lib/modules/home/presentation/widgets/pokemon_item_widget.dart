@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'pokemon_type_widget.dart';
 import '../../domain/entity/pokemon_entity.dart';
+import 'pokemon_type_widget.dart';
 
 class PokemonItemWidget extends StatelessWidget {
   final PokemonEntity pokemon;
@@ -42,7 +42,7 @@ class PokemonItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 4.0, top: 10),
+                padding: const EdgeInsets.only(left: 6.0, top: 10),
                 child: Text(
                   pokemon.name!,
                   style: const TextStyle(
@@ -54,7 +54,10 @@ class PokemonItemWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 5.0,
+                  vertical: 5.0,
+                ),
                 child: PokeItemTypeWidget(
                   types: pokemon.type,
                 ),
@@ -66,7 +69,6 @@ class PokemonItemWidget extends StatelessWidget {
             child: Image.network(
               pokemon.img!,
               // 'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokemon.number}.png',
-
               loadingBuilder: (
                 BuildContext context,
                 Widget child,

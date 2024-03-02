@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'mvvm.dart';
 import '../utils/utils.dart';
+import 'mvvm.dart';
 
 /// An abstract class to inject a [ViewModel] into a page/widget
 /// and dispose the [ViewModel] when the widget is disposed.

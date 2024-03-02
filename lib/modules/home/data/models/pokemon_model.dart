@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'evolution_model.dart';
 import '../../domain/entity/pokemon_entity.dart';
+import 'evolution_model.dart';
 
 class PokemonModel extends PokemonEntity {
   const PokemonModel({
@@ -87,10 +87,10 @@ class PokemonModel extends PokemonEntity {
         multipliers: entity.multipliers,
         weaknesses: entity.weaknesses,
         prevEvolution: entity.prevEvolution
-            ?.map((element) => EvolutionModel.fromEntity(element))
+            ?.map(EvolutionModel.fromEntity)
             .toList(),
         nextEvolution: entity.nextEvolution
-            ?.map((element) => EvolutionModel.fromEntity(element))
+            ?.map(EvolutionModel.fromEntity)
             .toList(),
       );
 

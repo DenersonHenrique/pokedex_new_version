@@ -1,6 +1,6 @@
-import 'mvvm.dart';
-import '../utils/utils.dart';
 import '../../interfaces/infrastructure/navigation_arguments.dart';
+import '../utils/utils.dart';
+import 'mvvm.dart';
 
 /// A mixin to inject a [ViewModel] into a page/widget
 ///

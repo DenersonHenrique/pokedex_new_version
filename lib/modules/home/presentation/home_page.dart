@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../commons/helpers/presentation/mvvm/mvvm.dart';
 import 'home_state.dart';
 import 'home_viewmodel.dart';
-import '../../../commons/helpers/presentation/mvvm/mvvm.dart';
 import 'widgets/pokemon_grid_widget.dart';
 // import 'widgets/pokemon_list_widget.dart';
 

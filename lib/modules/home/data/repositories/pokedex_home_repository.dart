@@ -1,4 +1,4 @@
-import 'package:pokedex_new_version/modules/home/domain/entity/pokemon_entity.dart';
+import '../../domain/entity/pokemon_entity.dart';
 
 import '../../domain/repositories/pokedex_home_repository.dart';
 import '../datasources/pokedex_home_datasource.dart';

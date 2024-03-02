@@ -1,6 +1,6 @@
-import 'home_state.dart';
-import '../domain/usecases/get_pokemon_list_usecase.dart';
 import '../../../commons/helpers/presentation/mvvm/mvvm.dart';
+import '../domain/usecases/get_pokemon_list_usecase.dart';
+import 'home_state.dart';
 
 class HomeViewModel extends ViewModel<HomeState> {
   final IGetPokemonListUsecase _usecase;
