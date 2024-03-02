@@ -25,3 +25,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/pokeball.png
+    - assets/images/pokeball_dark.png
+
+  fonts:
+    - family: Google
+      fonts:
+        - asset: assets/fonts/ProductSans-Bold.ttf
+        - asset: assets/fonts/ProductSans-Regular.ttf
+          weight: 700
