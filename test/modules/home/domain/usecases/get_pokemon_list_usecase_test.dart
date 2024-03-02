@@ -10,11 +10,11 @@ class PokedexHomeRepositoryMock extends Mock
 
 void main() {
   late PokedexHomeRepositoryMock repository;
-  late GetPokemonList usecase;
+  late GetPokemonListUsecase usecase;
 
   setUp(() {
     repository = PokedexHomeRepositoryMock();
-    usecase = GetPokemonList(repository);
+    usecase = GetPokemonListUsecase(repository);
   });
 
   group('Find Pokemon list.', () {

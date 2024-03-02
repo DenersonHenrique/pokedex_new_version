@@ -1,14 +1,14 @@
 import '../entity/pokemon_entity.dart';
 import '../repositories/pokedex_home_repository.dart';
 
-abstract class IGetPokemonList {
+abstract class IGetPokemonListUsecase {
   Future<List<PokemonEntity>> call();
 }
 
-class GetPokemonList implements IGetPokemonList {
+class GetPokemonListUsecase implements IGetPokemonListUsecase {
   final IPokedexHomeRepository _repository;
 
-  GetPokemonList(this._repository);
+  GetPokemonListUsecase(this._repository);
 
   @override
   Future<List<PokemonEntity>> call() async =>

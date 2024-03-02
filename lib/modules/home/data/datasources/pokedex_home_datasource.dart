@@ -1,7 +1,7 @@
-import 'package:pokedex_new_version/commons/helpers/erros.dart';
-
-import '../../../../commons/adapters/http_client.dart';
 import '../models/pokemon_model.dart';
+import '../../../../commons/helpers/erros.dart';
+import '../../../../commons/adapters/http_client.dart';
+import '../../../../commons/constants/consts_api.dart';
 
 abstract class IPokedexHomeDatasource {
   Future<List<PokemonModel>> get();
@@ -15,7 +15,7 @@ class PokedexHomeDataSource extends IPokedexHomeDatasource {
   @override
   Future<List<PokemonModel>> get() async {
     try {
-      final response = await _client.get('path');
+      final response = await _client.get(ConstsApi.pokeApiUrl);
 
       return ((response.data ?? []) as List)
           .map((element) => PokemonModel.fromMap(element))
