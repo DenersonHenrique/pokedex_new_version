@@ -17,6 +17,8 @@ class HomeViewModel extends ViewModel<HomeState> {
     emit(state.copyWith(isLoading: true));
 
     try {
+      await Future.delayed(const Duration(seconds: 10));
+
       final result = await _usecase();
       emit(state.copyWith(pokemonList: result));
     } catch (error) {

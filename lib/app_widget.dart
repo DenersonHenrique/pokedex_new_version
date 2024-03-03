@@ -7,9 +7,6 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      // child: const Center(
-      //   child: Text('Nova Pokedex'),
-      // ),
       routerConfig: Modular.routerConfig,
     );
   }
