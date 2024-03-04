@@ -3,23 +3,23 @@ import '../domain/entity/pokemon_entity.dart';
 
 class HomeState extends ViewModelState {
   factory HomeState.initial() => const HomeState();
-  final bool isError;
+  final bool hasError;
   final bool isLoading;
   final List<PokemonEntity> pokemonList;
 
   const HomeState({
-    this.isError = false,
+    this.hasError = false,
     this.isLoading = false,
     this.pokemonList = const [],
   });
 
   HomeState copyWith({
-    bool? isError,
+    bool? hasError,
     bool? isLoading,
     List<PokemonEntity>? pokemonList,
   }) {
     return HomeState(
-      isError: isError ?? this.isError,
+      hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
       pokemonList: pokemonList ?? this.pokemonList,
     );
