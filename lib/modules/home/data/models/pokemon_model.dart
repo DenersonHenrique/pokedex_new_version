@@ -42,9 +42,15 @@ class PokemonModel extends PokemonEntity {
       multipliers: (map['multipliers'] != null
           ? (map['multipliers'] as List<dynamic>).cast<double>()
           : []),
-      weaknesses: (map['weaknesses'] as List<dynamic>).cast<String>(),
-      prevEvolution: map['prevEvolution'],
-      nextEvolution: map['nextEvolution'],
+      weaknesses: (map['weaknesses'] != null
+          ? (map['weaknesses'] as List<dynamic>).cast<String>()
+          : []),
+      prevEvolution: (map['prevEvolution'] != null
+          ? (map['prevEvolution'] as List<dynamic>).cast<EvolutionModel>()
+          : []),
+      nextEvolution: (map['nextEvolution'] != null
+          ? (map['nextEvolution'] as List<dynamic>).cast<EvolutionModel>()
+          : []),
     );
   }
 
@@ -86,12 +92,10 @@ class PokemonModel extends PokemonEntity {
         spawnTime: entity.spawnTime,
         multipliers: entity.multipliers,
         weaknesses: entity.weaknesses,
-        prevEvolution: entity.prevEvolution
-            ?.map(EvolutionModel.fromEntity)
-            .toList(),
-        nextEvolution: entity.nextEvolution
-            ?.map(EvolutionModel.fromEntity)
-            .toList(),
+        prevEvolution:
+            entity.prevEvolution?.map(EvolutionModel.fromEntity).toList(),
+        nextEvolution:
+            entity.nextEvolution?.map(EvolutionModel.fromEntity).toList(),
       );
 
   Map<String, dynamic> get toMap => {

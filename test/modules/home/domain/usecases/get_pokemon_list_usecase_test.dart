@@ -1,55 +1,50 @@
-import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:pokedex_new_version/modules/home/domain/entity/pokemon_entity.dart';
 import 'package:pokedex_new_version/modules/home/domain/repositories/pokedex_home_repository.dart';
 import 'package:pokedex_new_version/modules/home/domain/usecases/get_pokemon_list_usecase.dart';
 
-class PokedexHomeRepositoryMock extends Mock
+import '../../../../mocks/pokemon_entity_mock.dart';
+
+class MockPokedexHomeRepository extends Mock
     implements IPokedexHomeRepository {}
 
 void main() {
-  late PokedexHomeRepositoryMock repository;
+  late MockPokedexHomeRepository repository;
   late GetPokemonListUsecase usecase;
 
+  final List<PokemonEntity> mockPokemonList = List.generate(
+    10,
+    (_) => MockPokemonEntity.random(),
+  );
+
   setUp(() {
-    repository = PokedexHomeRepositoryMock();
+    repository = MockPokedexHomeRepository();
     usecase = GetPokemonListUsecase(repository);
   });
 
-  group('Find Pokemon list.', () {
-    test('Should be return a Pokemon List.', () async {
-      when(repository.getPokemonList()).thenAnswer(
-        (_) async => pokemonList,
+  group('GetPokemonListUsecase', () {
+    test('should return a list of PokemonEntity from repository', () async {
+      // Arrange
+      when(() => repository.getPokemonList()).thenAnswer(
+        (_) async => mockPokemonList,
       );
 
+      // Act
       final result = await usecase.call();
 
-      expect(result, equals(pokemonList));
+      // Assert
+      expect(result, equals(mockPokemonList));
+      verify(() => repository.getPokemonList()).called(1);
+    });
+
+    test('should throw an exception if repository call fails', () async {
+      // Arrange
+      when(() => repository.getPokemonList()).thenThrow(Exception());
+
+      // Act & Assert
+      expect(() => usecase.call(), throwsException);
       verify(() => repository.getPokemonList()).called(1);
     });
   });
 }
-
-final List<PokemonEntity> pokemonList = <PokemonEntity>[
-  PokemonEntity(
-    id: 1,
-    number: faker.randomGenerator.integer(150).toString(),
-    name: faker.guid.guid(),
-    img: faker.guid.guid(),
-    type: faker.lorem.words(4),
-    height: faker.guid.guid(),
-    weight: faker.guid.guid(),
-    candy: faker.guid.guid(),
-    candyCount: faker.randomGenerator.integer(25),
-    egg: faker.guid.guid(),
-    spawnChance: faker.randomGenerator.decimal(),
-    avgSpawns: faker.randomGenerator.decimal(),
-    spawnTime: faker.guid.guid(),
-    multipliers: faker.randomGenerator.amount(
-      (_) => faker.randomGenerator.decimal(),
-      10,
-    ),
-    weaknesses: faker.lorem.words(4),
-  ),
-];

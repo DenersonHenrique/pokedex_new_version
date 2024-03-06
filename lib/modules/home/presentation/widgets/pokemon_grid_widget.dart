@@ -14,6 +14,7 @@ class PokemonGridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      key: const Key('pokemon_grid'),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Number of columns in the grid
         crossAxisSpacing: 6.0, // Spacing between columns
