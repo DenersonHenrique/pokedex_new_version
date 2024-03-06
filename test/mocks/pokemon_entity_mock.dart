@@ -1,4 +1,5 @@
 import 'package:faker/faker.dart';
+import 'package:pokedex_new_version/modules/home/domain/entity/evolution_entity.dart';
 import 'package:pokedex_new_version/modules/home/domain/entity/pokemon_entity.dart';
 
 class MockPokemonEntity extends PokemonEntity {
@@ -18,6 +19,8 @@ class MockPokemonEntity extends PokemonEntity {
     String super.spawnTime = '',
     List<double> super.multipliers = const <double>[],
     List<String> super.weaknesses = const <String>[],
+    final List<EvolutionEntity>? prevEvolution = const <EvolutionEntity>[],
+    final List<EvolutionEntity>? nextEvolution = const <EvolutionEntity>[],
   });
 
   factory MockPokemonEntity.random() {
@@ -38,6 +41,20 @@ class MockPokemonEntity extends PokemonEntity {
       spawnTime: faker.date.time(),
       multipliers: List.generate(3, (_) => faker.randomGenerator.decimal()),
       weaknesses: List.generate(3, (_) => faker.randomGenerator.string(15)),
+      nextEvolution: List.generate(
+        2,
+        (_) => EvolutionEntity(
+          number: faker.randomGenerator.integer(999).toString(),
+          name: faker.person.firstName(),
+        ),
+      ),
+      prevEvolution: List.generate(
+        2,
+        (_) => EvolutionEntity(
+          number: faker.randomGenerator.integer(999).toString(),
+          name: faker.person.firstName(),
+        ),
+      ),
     );
   }
 }
