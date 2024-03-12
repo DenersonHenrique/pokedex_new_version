@@ -15,7 +15,25 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends ViewState<HomePage, HomeViewModel> {
+class _HomePageState extends ViewState<HomePage, HomeViewModel>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +44,16 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
           Center(
             child: Opacity(
               opacity: 0.1,
-              child: Image.asset(
-                'assets/images/pokeball_dark.png',
-                height: context.screenHeight * 0.7,
-                width: context.screenWidth * 0.7,
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: RotationTransition(
+                  turns: _controller,
+                  child: Image.asset(
+                    'assets/images/pokeball_dark.png',
+                    height: context.screenHeight * 0.7,
+                    width: context.screenWidth * 0.7,
+                  ),
+                ),
               ),
             ),
           ),
@@ -39,11 +63,7 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
               ViewModelBuilder<HomeViewModel, HomeState>(
                 viewModel: viewModel,
                 builder: (context, state) {
-                  if (state.isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state.hasError) {
+                  if (state.hasError) {
                     return Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +93,7 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
                       ),
                     );
                   }
+                  // return Container();
                   return Expanded(
                     // child: PokemonListWidget(
                     //   pokemonList: state.pokemonList,
